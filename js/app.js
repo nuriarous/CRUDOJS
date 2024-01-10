@@ -10,9 +10,7 @@ import {
 //primero mostramos los clientes por defecto que tenemos en la pagina
 const url = "http://localhost:4000/clientes";
 const clientes = obtenerDatos(url);
- 
+
 clientes.then( cli => {
     mostrarClientes(cli);
 });
-
-window.onload = mostrarClientes();

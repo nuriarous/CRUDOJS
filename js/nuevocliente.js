@@ -1,12 +1,13 @@
 //todo lo relacionado con la validación y llamada a función conexión API
 let formulario = document.getElementById('formulario');
-let botonAgregar = document.querySelector('.bg-teal-600');
-botonAgregar.addEventListener('click', nuevoCliente)
+let botonAgregar = formulario.querySelector('.bg-teal-600');
+console.log(botonAgregar)
+botonAgregar.addEventListener('click', function(e){
+    e.preventDefault();
+    nuevoCliente();
+})
 
 function nuevoCliente() {
-
-    console.log('Hola');
-    /*
     let nombre = document.getElementById('nombre').value;
     let email = document.getElementById('email').value;
     let telefono = document.getElementById('telefono').value;
@@ -21,7 +22,6 @@ function nuevoCliente() {
         aviso.appendChild(texto);
         formulario.appendChild(aviso);
     }
-*/
 
 
 }
