@@ -12,7 +12,23 @@ async function obtenerDatos(url) {
         console.log('obtenerDatos err', err.message);
     }
 }
+async function guardarCliente(url) {
+    try {
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(cliente),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const resultado = await respuesta.json();
 
-export{
+        return resultado;
+
+    } catch (err) {
+        console.log('obtenerDatos err', err.message);
+    }
+}
+
+export {
     obtenerDatos,
+    guardarCliente,
 }
