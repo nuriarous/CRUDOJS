@@ -6,13 +6,16 @@ import {
 
 
 let formulario = document.getElementById('formulario');
-let botonAgregar = formulario.querySelector('.bg-teal-600');
 let avisoMostrado = false;
-console.log(botonAgregar)
-botonAgregar.addEventListener('click', function (e) {
-    e.preventDefault();
-    nuevoCliente();
-})
+if(formulario != null){
+    let botonAgregar = formulario.querySelector('.bg-teal-600');
+
+    console.log(botonAgregar)
+    botonAgregar.addEventListener('click', function (e) {
+        e.preventDefault();
+        nuevoCliente();
+    })
+}
 
 export{
     avisoMostrado
