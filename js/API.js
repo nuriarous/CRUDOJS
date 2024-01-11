@@ -12,23 +12,46 @@ async function obtenerDatos(url) {
         console.log('obtenerDatos err', err.message);
     }
 }
-async function guardarCliente(url) {
+async function guardarCliente(cliente) {
     try {
-        const respuesta = await fetch(url, {
+        console.log(cliente)
+        const respuesta = await fetch("http://localhost:4000/clientes", {
             method: 'POST',
             body: JSON.stringify(cliente),
             headers: { 'Content-Type': 'application/json' }
         });
         const resultado = await respuesta.json();
-
-        return resultado;
-
+        window.location.href = "../index.html";
     } catch (err) {
         console.log('obtenerDatos err', err.message);
+    }
+}
+
+async function editarClienteApi(cliente, id){
+    try{
+        const respuesta = await fetch("http://localhost:4000/clientes/"+id, {
+            method: 'PUT',
+            body: JSON.stringify(cliente),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    }catch(err){
+        console.log(err);
+    }
+}
+
+async function borrarClienteApi(id){
+    try{
+        const respuesta = await fetch("http://localhost:4000/clientes/"+id, {
+            method: 'DELETE'
+        });
+    }catch(err){
+        console.log(err);
     }
 }
 
 export {
     obtenerDatos,
     guardarCliente,
+    editarClienteApi,
+    borrarClienteApi
 }

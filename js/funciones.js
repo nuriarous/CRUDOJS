@@ -1,14 +1,16 @@
+import { guardarCliente, editarClienteApi, borrarClienteApi } from "./API.js";
+
 //funciones generales que pueden servir para varios ficheros
 let avisoMostrado = false;
 
 function mostrarClientes(clientes) {
     let tabla = document.getElementById("listado-clientes");
     clientes.forEach(cli => {
-        tabla.innerHTML += "<tr><td>" + cli.nombre + "</td><td>" + cli.telefono + "</td><td>" + cli.empresa + "</td><td>" + cli.email + "</td></tr>";
+        tabla.innerHTML += "<tr class='px-6 py-4 whitespace-no-wrap border-b border-gray-200'><td>" + cli.nombre + "</td><td>" + cli.telefono + "</td><td>" + cli.empresa + "</td>" + '<td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5"><a href="editar-cliente.html?id=' + cli['id'] + '" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a><a href="index.html?id='+ cli['id'] +'" class="text-red-600 hover:text-red-900 eliminar">Eliminar</a></td>';
     });
 }
 
-function nuevoCliente() {
+function comprobarDatos(){
     let nombre = document.getElementById('nombre').value;
     let email = document.getElementById('email').value;
     let telefono = document.getElementById('telefono').value;
@@ -31,18 +33,42 @@ function nuevoCliente() {
                 avisoMostrado = false;
             }, 5000);
         }
+        return false;
     } else {
-        nombre = "nombre: " + nombre;
-        email = "email: " + email;
-        telefono = "telefono: " + telefono;
-        empresa = "empresa: " + empresa;
-        console.log(nombre, email, telefono, empresa);
+        const cliente = {
+            nombre: nombre,
+            email: email,
+            telefono: telefono,
+            empresa: empresa
+        }
+        return cliente;
     }
 
+}
 
+async function nuevoCliente() {
+    let comprobado = comprobarDatos();
+
+    if(comprobado != false){
+        let resultado = await guardarCliente(comprobado);
+    }
+}
+
+async function editarCliente(id){
+    let comprobado = comprobarDatos();
+
+    if(comprobado != false){
+        let resultado = await editarClienteApi(comprobado, id);
+    }
+}
+
+async function borrarCliente(id){
+    await borrarClienteApi(id);
 }
 
 export {
     mostrarClientes,
-    nuevoCliente
+    nuevoCliente,
+    editarCliente,
+    borrarCliente
 }

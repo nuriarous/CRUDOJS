@@ -1,25 +1,11 @@
 {
   "clientes": [
     {
-      "nombre": "Francisco Jose",
-      "email": "patofran42@meCago.com",
-      "telefono": "123 54 76 98",
-      "empresa": "reformasClaus",
-      "id": 1 
-    },
-    {
-      "nombre": "Nuria Romero",
-      "email": "patoNuria@meCago.com",
-      "telefono": "987 12 43 75",
-      "empresa": "reformasGil",
-      "id": 2 
-    },
-    {
-      "nombre": "Jordi Benavent",
-      "email": "patoJordi64@meCago.com",
-      "telefono": "655 12 71 62",
-      "empresa": "MultiVar",
-      "id": 3 
+      "id": "5d0c",
+      "nombre": "asd",
+      "email": "asd@gmail.com",
+      "telefono": "1212",
+      "empresa": "asa"
     }
   ]
 }
