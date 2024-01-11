@@ -1,5 +1,9 @@
 //funciones generales que pueden servir para varios ficheros
 
+import { 
+    avisoMostrado
+ } from "./nuevocliente.js";
+
 function mostrarClientes(clientes) {
     let tabla = document.getElementById("listado-clientes");
     clientes.forEach(cli => {
@@ -28,10 +32,10 @@ function nuevoCliente() {
         }, 5000);
         avisoMostrado = true;
     } else {
-        nombre.textContent = "nombre: " + nombre;
-        email.textContent = "email: " + email;
-        telefono.textContent = "telefono: " + telefono;
-        empresa.textContent = "empresa: " + empresa;
+        nombre = "nombre: " + nombre;
+        email = "email: " + email;
+        telefono = "telefono: " + telefono;
+        empresa = "empresa: " + empresa;
         console.log(nombre, email, telefono, empresa);
     }
 

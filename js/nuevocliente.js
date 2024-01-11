@@ -14,4 +14,6 @@ botonAgregar.addEventListener('click', function (e) {
     nuevoCliente();
 })
 
-
+export{
+    avisoMostrado
+}
