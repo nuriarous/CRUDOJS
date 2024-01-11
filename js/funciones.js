@@ -1,8 +1,5 @@
 //funciones generales que pueden servir para varios ficheros
-
-import { 
-    avisoMostrado
- } from "./nuevocliente.js";
+let avisoMostrado = false;
 
 function mostrarClientes(clientes) {
     let tabla = document.getElementById("listado-clientes");
@@ -17,20 +14,23 @@ function nuevoCliente() {
     let telefono = document.getElementById('telefono').value;
     let empresa = document.getElementById('empresa').value;
 
-    if (!avisoMostrado && (nombre == "" || email == "" || telefono == "" || empresa == "")) {
-        let aviso = document.createElement('div');
-        let texto = document.createElement('p');
-        aviso.classList.add('bg-red-100', 'border-red-400', 'text-red-700', 'px-4', 'py-3', 'rounded',
-            'max-w-lg', 'mx-auto', 'mt-6', 'text-center');
-        texto.innerHTML = '<strong>Error!</strong> Todos los campos son obligatorios';
-        aviso.appendChild(texto);
-        formulario.appendChild(aviso);
-
-        setTimeout(function () {
-            formulario.removeChild(aviso);
-            avisoMostrado = false;
-        }, 5000);
-        avisoMostrado = true;
+    if (nombre == "" || email == "" || telefono == "" || empresa == "") {
+        if(avisoMostrado == false){
+            let aviso = document.createElement('div');
+            let texto = document.createElement('p');
+            aviso.classList.add('bg-red-100', 'border-red-400', 'text-red-700', 'px-4', 'py-3', 'rounded',
+                'max-w-lg', 'mx-auto', 'mt-6', 'text-center');
+            texto.innerHTML = '<strong>Error!</strong> Todos los campos son obligatorios';
+            aviso.appendChild(texto);
+            formulario.appendChild(aviso);
+    
+            avisoMostrado = true;
+    
+            setTimeout(function () {
+                formulario.removeChild(aviso);
+                avisoMostrado = false;
+            }, 5000);
+        }
     } else {
         nombre = "nombre: " + nombre;
         email = "email: " + email;
